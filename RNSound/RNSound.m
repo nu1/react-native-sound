@@ -68,7 +68,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(enable:(BOOL)enabled) {
   AVAudioSession *session = [AVAudioSession sharedInstance];
-  [session setCategory: AVAudioSessionCategoryAmbient error: nil];
+  //[session setCategory: AVAudioSessionCategoryAmbient error: nil];
   [session setActive: enabled error: nil];
 }
 
@@ -101,7 +101,7 @@ RCT_EXPORT_METHOD(setCategory:(NSString *)categoryName
     if (mixWithOthers) {
         [session setCategory: category withOptions:AVAudioSessionCategoryOptionMixWithOthers error: nil];
     } else {
-      [session setCategory: category error: nil];
+      [session setCategory: category withOptions:AVAudioSessionCategoryOptionDuckOthers error: nil];
     }
   }
 }
